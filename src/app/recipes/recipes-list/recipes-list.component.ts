@@ -30,7 +30,6 @@ export class RecipesListComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.recipes);
 
   }
 
