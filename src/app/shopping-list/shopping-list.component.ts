@@ -17,4 +17,12 @@ export class ShoppingListComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  addIngredient(ingredient: IngredientModel) {
+    this.ingredients.push(ingredient);
+  }
+
+  deleteIngredient() {
+    if (this.ingredients !== [] && this.ingredients !== undefined) { }
+    this.ingredients.pop();
+  }
 }
