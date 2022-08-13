@@ -4,9 +4,9 @@ import { IngredientModel } from "src/app/shared/ingredient-model";
 export class ShoppinListService {
     ingredientChange = new EventEmitter<IngredientModel[]>();
     private ingredients: IngredientModel[] = [
-        new IngredientModel("Apples", 100),
-        new IngredientModel("Vineger", 150),
-        new IngredientModel("Red Chillt", 50),
+        // new IngredientModel("Apples", 100),
+        // new IngredientModel("Vineger", 150),
+        // new IngredientModel("Red Chillt", 50),
     ];
 
     getIngredients() {
@@ -24,5 +24,10 @@ export class ShoppinListService {
             this.ingredients.pop();
             this.ingredientChange.emit(this.ingredients.slice());
         }
+    }
+
+    addIngredientList(ingredientList: IngredientModel[]) {
+        this.ingredients.push(...ingredientList);
+        this.ingredientChange.emit(this.ingredients.slice());
     }
 }
