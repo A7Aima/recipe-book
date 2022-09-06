@@ -8,11 +8,4 @@ import { Component, EventEmitter, Output } from "@angular/core";
 })
 export class HeaderComponent {
 
-    @Output("featureUsing") featureSelected = new EventEmitter<string>();
-
-    collapsed: boolean = true;
-
-    onSelect(feature: string) {
-        this.featureSelected.emit(feature);
-    }
 }
