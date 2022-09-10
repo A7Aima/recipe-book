@@ -1,4 +1,5 @@
-import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { IngredientModel } from 'src/app/shared/ingredient-model';
 import { ShoppinListService } from '../shopping-service/shopping.service';
 
@@ -9,28 +10,26 @@ import { ShoppinListService } from '../shopping-service/shopping.service';
 })
 export class ShoppingEditComponent implements OnInit {
 
-  @ViewChild("nameInput") nameInputField: ElementRef;
-
-  @ViewChild("amountInput") amountInputField: ElementRef;
 
   constructor(private shoppingService: ShoppinListService) { }
 
   ngOnInit(): void {
   }
 
-  addingIngredient() {
-    if (this.nameInputField.nativeElement.value !== "" && this.amountInputField.nativeElement.value !== "") {
+  addingIngredient(form: NgForm) {
+    const values = form.value;
+    if (values.name !== "" && values.amount !== "") {
       this.shoppingService.addIngredient(new IngredientModel(
-        this.nameInputField.nativeElement.value,
-        this.amountInputField.nativeElement.value,
+        values.name,
+        values.amount,
       ));
     }
-    this.clearIngredient();
+    // this.clearIngredient();
   }
-  clearIngredient() {
-    this.nameInputField.nativeElement.value = "";
-    this.amountInputField.nativeElement.value = "";
-  }
+  // clearIngredient() {
+  //   this.nameInputField.nativeElement.value = "";
+  //   this.amountInputField.nativeElement.value = "";
+  // }
 
   deletingIngredient() {
     this.shoppingService.deleteIngredient();
