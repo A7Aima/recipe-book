@@ -24,10 +24,14 @@ export class ShoppinListService {
         this.ingredientChange.next(this.ingredients.slice());
     }
 
-    deleteIngredient() {
-        if (this.ingredients !== undefined && this.ingredients.length === 0) {
+    updateIngredient(index: number, newIngredient: IngredientModel) {
+        this.ingredients[index] = newIngredient;
+        this.ingredientChange.next(this.ingredients.slice());
+    }
 
-            this.ingredients.pop();
+    deleteIngredient(index: number) {
+        if (this.ingredients !== undefined && this.ingredients.length !== 0) {
+            this.ingredients.splice(index, 1);
             this.ingredientChange.next(this.ingredients.slice());
         }
     }
