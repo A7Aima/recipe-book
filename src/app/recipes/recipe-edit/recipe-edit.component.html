@@ -19,15 +19,16 @@
         <div class="col-xs-12">
           <div class="form-group">
             <label for="imagePath">Image URL</label>
-            <input type="text" id="imagePath" class="form-control" formControlName="imagePath">
+            <input type="text" id="imagePath" class="form-control" formControlName="imagePath" #imagePath>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-xs-12">
-          <img src="" class="image-responsive">
+          <img [src]="imagePath.value" class="image-responsive">
         </div>
       </div>
+      <!-- https://media.istockphoto.com/photos/indian-thali-indian-food-picture-id464597982?k=20&m=464597982&s=612x612&w=0&h=ktqyfjPcpw5Ehs7YQCAnrUNOC9jqyNdxU7vJ6Wa15Rs= -->
       <div class="row">
         <div class="col-xs-12">
           <div class="form-group">
