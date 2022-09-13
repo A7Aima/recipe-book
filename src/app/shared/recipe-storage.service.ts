@@ -18,4 +18,13 @@ export class DataStorageService {
       console.log(response);
     });
   }
+
+  fetchRecipes() {
+    const recipes = this.recipeServics.getRecipe();
+    this.http
+      .get<Recipe[]>(this._url + 'recipes.json')
+      .subscribe((recipesResp) => {
+        this.recipeServics.setRecipes(recipesResp);
+      });
+  }
 }
